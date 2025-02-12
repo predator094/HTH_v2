@@ -14,6 +14,14 @@ import asyncio
 import pytz
 import json
 
+st.set_page_config(
+    page_title="H2H File Sharing",
+    page_icon="🙏",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
+
 # Initialize Firebase Admin SDK
 if not firebase_admin._apps:
     key_dict = json.loads(st.secrets["textkey"])

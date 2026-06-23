@@ -1,0 +1,92 @@
+name: H2H — Test & Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # ── backend tests ──────────────────────────────────────────────────────────
+  test-backend:
+    name: Backend tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt pytest httpx pytest-anyio
+
+      - name: Run tests
+        env:
+          TESTING: "true"
+          DB_PATH: ":memory:"
+        run: pytest tests/ -v --tb=short
+
+  # ── build check ───────────────────────────────────────────────────────────
+  build-frontend:
+    name: Frontend build check
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        env:
+          BACKEND_URL: http://localhost:8000
+        run: npm run build
+
+  # ── deploy (main branch only) ─────────────────────────────────────────────
+  deploy:
+    name: Deploy to VPS
+    needs: [test-backend, build-frontend]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            set -e
+            cd /opt/h2h-revamp
+
+            git pull origin main
+
+            # Rebuild and restart containers
+            docker compose build --no-cache
+            docker compose up -d --remove-orphans
+
+            # Reload nginx config if it changed
+            sudo nginx -t && sudo systemctl reload nginx
+
+            echo "Deploy complete"

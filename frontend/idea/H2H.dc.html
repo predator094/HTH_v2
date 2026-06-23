@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+  @font-face{font-family:'Fredoka';font-style:normal;font-weight:400 700;font-display:swap;src:url(https://fonts.gstatic.com/s/fredoka/v17/X7n64b87HvSqjb_WIi2yDCRwoQ_k7367_DWu89XgHPyh.woff2) format('woff2');}
+  @font-face{font-family:'Nunito';font-style:normal;font-weight:400 700;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofINeaBTMnFcQ.woff2) format('woff2');}
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  @keyframes h2h-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.04,0.965) translateY(1px)}}
+  @keyframes h2h-tail{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(10deg)}}
+  @keyframes h2h-tailfast{0%,100%{transform:rotate(-16deg)}50%{transform:rotate(18deg)}}
+  @keyframes h2h-blink{0%,90%,100%{transform:scaleY(1)}95%{transform:scaleY(0.08)}}
+  @keyframes h2h-ear{0%,88%,100%{transform:rotate(0)}94%{transform:rotate(-7deg)}}
+  @keyframes h2h-floatsoft{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+  @keyframes h2h-trot{0%,100%{transform:translateY(0) rotate(-1.5deg)}25%{transform:translateY(-7px) rotate(1.5deg)}50%{transform:translateY(0) rotate(1.5deg)}75%{transform:translateY(-7px) rotate(-1.5deg)}}
+  @keyframes h2h-hop{0%{transform:translateY(0)}28%{transform:translateY(-30px)}52%{transform:translateY(0)}70%{transform:translateY(-13px)}100%{transform:translateY(0)}}
+  @keyframes h2h-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  @keyframes h2h-tiltosc{0%,100%{transform:rotate(9deg)}50%{transform:rotate(16deg)}}
+  @keyframes h2h-shake{0%,100%{transform:rotate(0)}20%{transform:rotate(-10deg)}40%{transform:rotate(9deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(6deg)}}
+  @keyframes h2h-sad{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+  @keyframes h2h-orbfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  @keyframes h2h-handoff{0%{transform:translate(0,0);opacity:1}100%{transform:translate(54px,-10px);opacity:0}}
+  @keyframes h2h-sparkle{0%{opacity:0;transform:scale(0)}35%{opacity:1}100%{opacity:0;transform:scale(1.7) translateY(-14px)}}
+  @keyframes h2h-leaf{0%{transform:translateY(-8vh) translateX(0) rotate(0deg);opacity:0}12%{opacity:.7}100%{transform:translateY(108vh) translateX(46px) rotate(240deg);opacity:0}}
+  @keyframes h2h-fly{0%,100%{opacity:.12;transform:translate(0,0)}50%{opacity:.9;transform:translate(9px,-12px)}}
+  @keyframes h2h-twinkle{0%,100%{opacity:.25}50%{opacity:1}}
+  @keyframes h2h-drift{0%,100%{transform:translateX(0)}50%{transform:translateX(60px)}}
+  @keyframes h2h-birds{0%{transform:translate(-140px,60px)}100%{transform:translate(1560px,-70px)}}
+  @keyframes h2h-doze{0%,100%{transform:rotate(0deg) translateY(0)}50%{transform:rotate(4deg) translateY(5px)}}
+  @keyframes h2h-zzz{0%{opacity:0;transform:translate(0,0) scale(.5)}20%{opacity:.95}100%{opacity:0;transform:translate(18px,-40px) scale(1.15)}}
+  @keyframes h2h-nibble{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+  @keyframes h2h-stretch{0%,100%{transform:scaleY(1) translateY(0)}28%{transform:scaleY(.9) translateY(7px)}56%{transform:scaleY(1.07) translateY(-7px) rotate(-2deg)}}
+  @keyframes h2h-lookaround{0%,100%{transform:rotate(0deg)}22%{transform:rotate(-13deg)}40%{transform:rotate(-13deg)}68%{transform:rotate(13deg)}86%{transform:rotate(13deg)}}
+  @keyframes h2h-foodbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+  @keyframes h2h-spiritpulse{0%,100%{opacity:.48}50%{opacity:1}}
+  @keyframes h2h-sp1{0%{opacity:0;transform:translate(0,0)}18%{opacity:.85}100%{opacity:0;transform:translate(-14px,-65px)}}
+  @keyframes h2h-sp2{0%{opacity:0;transform:translate(0,0)}18%{opacity:.8}100%{opacity:0;transform:translate(10px,-70px)}}
+  @keyframes h2h-sp3{0%{opacity:0;transform:translate(0,0)}18%{opacity:.9}100%{opacity:0;transform:translate(-6px,-62px)}}
+  @keyframes h2h-sp4{0%{opacity:0;transform:translate(0,0)}18%{opacity:.75}100%{opacity:0;transform:translate(12px,-58px)}}
+  @keyframes h2h-sp5{0%{opacity:0;transform:translate(0,0)}18%{opacity:.85}100%{opacity:0;transform:translate(-9px,-52px)}}
+  @keyframes h2h-foxfire{0%,100%{transform:translateY(0) scale(1);opacity:.7}50%{transform:translateY(-8px) scale(1.12);opacity:1}}
+  @keyframes h2h-foxfire2{0%,100%{transform:translateY(0) scale(1.05);opacity:.85}50%{transform:translateY(-6px) scale(.92);opacity:.55}}
+  @keyframes h2h-viewin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @keyframes h2h-reveal{0%{opacity:0;transform:translateY(10px) scale(.96)}100%{opacity:1;transform:none}}
+  @keyframes h2h-pulse{0%,100%{box-shadow:0 0 0 0 rgba(202,168,106,.0)}50%{box-shadow:0 0 0 7px rgba(202,168,106,.16)}}
+  ::placeholder{ color:#b6a98e; }
+  .h2h-scroll::-webkit-scrollbar{width:8px}
+  .h2h-scroll::-webkit-scrollbar-thumb{background:rgba(122,139,90,.35);border-radius:8px}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="--bg1:#f7efdd;--bg2:#e7d9bd;--parch:#fdf8ee;--ink:#4a4133;--soft:#8a7d66;--line:rgba(74,65,51,.12);--hill1:#cdd0a0;--hill2:#aebb83;--hill3:#8a9c62;--tree:#6f8350;--tree2:#5b6f43;--foliage:#7d8e5b;--sun:rgba(247,224,170,.7);--rock1:#c9b79a;--rock2:#ad9a7c;--rock3:#8b7960;--mist:rgba(253,248,238,.6);--t-day:1;--t-dusk:0;--t-night:0;--sundisc:#ffe2a0;--mtn:#d9d7bb;position:relative;min-height:100vh;width:100%;overflow:hidden;background:radial-gradient(120% 90% at 78% 8%, var(--bg1) 0%, var(--bg2) 100%);font-family:'Nunito',sans-serif;color:var(--ink);">
+
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" style="position:absolute;inset:0;width:100%;height:100%;">
+      <defs>
+        <radialGradient id="h2hSun" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="var(--sun)"/>
+          <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+        </radialGradient>
+      </defs>
+      <circle cx="1180" cy="180" r="300" fill="url(#h2hSun)"/>
+      <!-- SUN DISC (day/dusk) -->
+      <circle cx="1196" cy="168" r="58" fill="var(--sundisc)" style="opacity:calc(var(--t-day) + var(--t-dusk));transition:opacity .6s ease,fill .6s ease"/>
+      <!-- MOON (night) -->
+      <g style="opacity:var(--t-night);transition:opacity .6s ease">
+        <circle cx="1196" cy="168" r="60" fill="#e9edfb"/>
+        <circle cx="1174" cy="154" r="10" fill="#d6ddf1"/>
+        <circle cx="1216" cy="182" r="7.5" fill="#d6ddf1"/>
+        <circle cx="1202" cy="150" r="5.5" fill="#d6ddf1"/>
+      </g>
+      <!-- STARS (night) -->
+      <g style="opacity:var(--t-night);transition:opacity .6s ease">
+        <circle cx="210" cy="120" r="2.4" fill="#fbf7ea" style="animation:h2h-twinkle 3.4s ease-in-out infinite"/>
+        <circle cx="380" cy="80" r="1.8" fill="#fbf7ea" style="animation:h2h-twinkle 4.2s ease-in-out infinite;animation-delay:.6s"/>
+        <circle cx="560" cy="150" r="2" fill="#fbf7ea" style="animation:h2h-twinkle 3.8s ease-in-out infinite;animation-delay:1.1s"/>
+        <circle cx="740" cy="70" r="1.6" fill="#fbf7ea" style="animation:h2h-twinkle 4.6s ease-in-out infinite;animation-delay:.3s"/>
+        <circle cx="900" cy="130" r="2.2" fill="#fbf7ea" style="animation:h2h-twinkle 3.2s ease-in-out infinite;animation-delay:1.6s"/>
+        <circle cx="1040" cy="60" r="1.7" fill="#fbf7ea" style="animation:h2h-twinkle 4.0s ease-in-out infinite;animation-delay:.9s"/>
+        <circle cx="320" cy="220" r="1.6" fill="#fbf7ea" style="animation:h2h-twinkle 3.6s ease-in-out infinite;animation-delay:2.1s"/>
+        <circle cx="660" cy="240" r="1.8" fill="#fbf7ea" style="animation:h2h-twinkle 4.4s ease-in-out infinite;animation-delay:1.4s"/>
+        <circle cx="1330" cy="330" r="2" fill="#fbf7ea" style="animation:h2h-twinkle 3.9s ease-in-out infinite;animation-delay:.5s"/>
+        <circle cx="1080" cy="250" r="1.6" fill="#fbf7ea" style="animation:h2h-twinkle 4.1s ease-in-out infinite;animation-delay:1.9s"/>
+      </g>
+      <!-- CLOUDS (day/dusk) -->
+      <g style="opacity:calc(var(--t-day) + var(--t-dusk)*.9);transition:opacity .6s ease">
+        <g style="animation:h2h-drift 70s ease-in-out infinite">
+          <ellipse cx="300" cy="150" rx="78" ry="30" fill="#fffaf0" opacity=".9"/>
+          <ellipse cx="360" cy="138" rx="58" ry="32" fill="#fffaf0" opacity=".9"/>
+          <ellipse cx="252" cy="160" rx="48" ry="24" fill="#fff6e6" opacity=".85"/>
+        </g>
+        <g style="animation:h2h-drift 95s ease-in-out infinite;animation-delay:-40s">
+          <ellipse cx="820" cy="108" rx="68" ry="25" fill="#fffaf0" opacity=".82"/>
+          <ellipse cx="876" cy="98" rx="50" ry="27" fill="#fffaf0" opacity=".82"/>
+        </g>
+        <g style="animation:h2h-drift 82s ease-in-out infinite;animation-delay:-20s">
+          <ellipse cx="1130" cy="320" rx="60" ry="22" fill="#fff6e6" opacity=".68"/>
+          <ellipse cx="1178" cy="312" rx="44" ry="23" fill="#fff6e6" opacity=".68"/>
+        </g>
+      </g>
+      <!-- BIRDS (day) -->
+      <g style="opacity:var(--t-day);transition:opacity .6s ease">
+        <g style="animation:h2h-birds 46s linear infinite">
+          <path d="M0,0 Q9,-9 18,0 Q27,-9 36,0" fill="none" stroke="#7c6f59" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M44,26 Q52,17 60,26 Q68,17 76,26" fill="none" stroke="#8a7d66" stroke-width="2" stroke-linecap="round"/>
+          <path d="M92,8 Q99,0 106,8 Q113,0 120,8" fill="none" stroke="#7c6f59" stroke-width="2.2" stroke-linecap="round"/>
+        </g>
+      </g>
+      <!-- DISTANT MOUNTAINS -->
+      <polygon points="0,520 200,400 360,492 520,392 700,500 860,408 1040,500 1240,418 1440,498 1440,900 0,900" fill="var(--mtn)" opacity="0.62" style="transition:fill .6s ease"/>
+      <polygon points="0,560 240,470 480,545 760,455 1040,545 1280,480 1440,540 1440,900 0,900" fill="var(--hill1)" opacity="0.85"/>
+      <polygon points="0,690 280,615 540,680 840,605 1110,675 1330,625 1440,665 1440,900 0,900" fill="var(--hill2)" opacity="0.92"/>
+      <polygon points="556,470 576,470 566,446" fill="var(--tree2)" opacity="0.8"/>
+      <polygon points="612,484 634,484 623,456" fill="var(--tree2)" opacity="0.8"/>
+      <polygon points="980,492 1000,492 990,464" fill="var(--tree2)" opacity="0.8"/>
+      <polygon points="1310,476 1330,476 1320,450" fill="var(--tree2)" opacity="0.8"/>
+      <polygon points="430,548 452,548 441,520" fill="var(--tree2)" opacity="0.7"/>
+      <g>
+        <rect x="172" y="735" width="14" height="48" fill="var(--tree2)"/>
+        <polygon points="116,762 244,762 180,688" fill="var(--tree)"/>
+        <polygon points="180,688 244,762 180,762" fill="var(--tree2)"/>
+        <polygon points="130,712 230,712 180,648" fill="var(--tree)"/>
+        <polygon points="180,648 230,712 180,712" fill="var(--tree2)"/>
+        <polygon points="144,668 216,668 180,612" fill="var(--tree)"/>
+        <polygon points="180,612 216,668 180,668" fill="var(--tree2)"/>
+      </g>
+      <g>
+        <rect x="312" y="760" width="11" height="40" fill="var(--tree2)"/>
+        <polygon points="270,782 366,782 318,724" fill="var(--tree)"/>
+        <polygon points="318,724 366,782 318,782" fill="var(--tree2)"/>
+        <polygon points="282,740 354,740 318,692" fill="var(--tree)"/>
+        <polygon points="318,692 354,740 318,740" fill="var(--tree2)"/>
+      </g>
+      <g>
+        <rect x="1262" y="748" width="13" height="44" fill="var(--tree2)"/>
+        <polygon points="1206,772 1330,772 1268,700" fill="var(--tree)"/>
+        <polygon points="1268,700 1330,772 1268,772" fill="var(--tree2)"/>
+        <polygon points="1220,724 1316,724 1268,662" fill="var(--tree)"/>
+        <polygon points="1268,662 1316,724 1268,724" fill="var(--tree2)"/>
+        <polygon points="1232,680 1304,680 1268,628" fill="var(--tree)"/>
+        <polygon points="1268,628 1304,680 1268,680" fill="var(--tree2)"/>
+      </g>
+      <g>
+        <rect x="1112" y="772" width="10" height="36" fill="var(--tree2)"/>
+        <polygon points="1074,792 1160,792 1117,740" fill="var(--tree)"/>
+        <polygon points="1117,740 1160,792 1117,792" fill="var(--tree2)"/>
+      </g>
+      <polygon points="0,808 300,748 600,806 900,756 1200,804 1440,766 1440,900 0,900" fill="var(--hill3)"/>
+      <ellipse cx="120" cy="912" rx="180" ry="120" fill="var(--foliage)" opacity="0.9"/>
+      <ellipse cx="430" cy="932" rx="220" ry="120" fill="var(--foliage)" opacity="0.8"/>
+      <ellipse cx="900" cy="932" rx="240" ry="120" fill="var(--foliage)" opacity="0.82"/>
+      <ellipse cx="1320" cy="914" rx="210" ry="120" fill="var(--foliage)" opacity="0.9"/>
+      <polygon points="250,860 258,800 266,860" fill="var(--tree)"/>
+      <polygon points="268,862 276,812 284,862" fill="var(--tree2)"/>
+      <polygon points="690,868 698,808 706,868" fill="var(--tree)"/>
+      <polygon points="1040,866 1048,810 1056,866" fill="var(--tree2)"/>
+      <polygon points="1180,870 1188,818 1196,870" fill="var(--tree)"/>
+    </svg>
+  </div>
+
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;">
+      <div style="position:absolute;left:8%;top:0;width:13px;height:13px;border-radius:60% 30% 60% 30%;background:rgba(122,139,90,.5);animation:h2h-leaf 15s linear infinite;animation-delay:0s;"></div>
+      <div style="position:absolute;left:24%;top:0;width:10px;height:10px;border-radius:60% 30% 60% 30%;background:rgba(217,143,84,.5);animation:h2h-leaf 19s linear infinite;animation-delay:4s;"></div>
+      <div style="position:absolute;left:62%;top:0;width:12px;height:12px;border-radius:60% 30% 60% 30%;background:rgba(202,168,106,.55);animation:h2h-leaf 17s linear infinite;animation-delay:8s;"></div>
+      <div style="position:absolute;left:82%;top:0;width:9px;height:9px;border-radius:60% 30% 60% 30%;background:rgba(122,139,90,.45);animation:h2h-leaf 21s linear infinite;animation-delay:11s;"></div>
+      <div style="position:absolute;left:44%;top:0;width:11px;height:11px;border-radius:60% 30% 60% 30%;background:rgba(217,143,84,.4);animation:h2h-leaf 23s linear infinite;animation-delay:15s;"></div>
+      <div style="position:absolute;left:16%;top:62%;width:7px;height:7px;border-radius:50%;background:#e9c877;box-shadow:0 0 10px 3px rgba(233,200,119,.7);animation:h2h-fly 6s ease-in-out infinite;animation-delay:.4s;"></div>
+      <div style="position:absolute;left:70%;top:40%;width:6px;height:6px;border-radius:50%;background:#e9c877;box-shadow:0 0 10px 3px rgba(233,200,119,.7);animation:h2h-fly 7s ease-in-out infinite;animation-delay:1.8s;"></div>
+      <div style="position:absolute;left:88%;top:70%;width:6px;height:6px;border-radius:50%;background:#e9c877;box-shadow:0 0 10px 3px rgba(233,200,119,.7);animation:h2h-fly 8s ease-in-out infinite;animation-delay:3.2s;"></div>
+      <div style="position:absolute;left:34%;top:30%;width:5px;height:5px;border-radius:50%;background:#e9c877;box-shadow:0 0 9px 3px rgba(233,200,119,.6);animation:h2h-fly 6.5s ease-in-out infinite;animation-delay:2.5s;"></div>
+      <div style="position:absolute;left:52%;top:56%;width:5px;height:5px;border-radius:50%;background:#e9c877;box-shadow:0 0 9px 3px rgba(233,200,119,.6);animation:h2h-fly 7.5s ease-in-out infinite;animation-delay:4.1s;"></div>
+      <div style="position:absolute;left:9%;top:46%;width:6px;height:6px;border-radius:50%;background:#e9c877;box-shadow:0 0 10px 3px rgba(233,200,119,.65);animation:h2h-fly 6.8s ease-in-out infinite;animation-delay:5.3s;"></div>
+      <div style="position:absolute;left:26%;top:74%;width:5px;height:5px;border-radius:50%;background:#e9c877;box-shadow:0 0 9px 3px rgba(233,200,119,.6);animation:h2h-fly 8.4s ease-in-out infinite;animation-delay:2.0s;"></div>
+      <div style="position:absolute;left:60%;top:18%;width:5px;height:5px;border-radius:50%;background:#e9c877;box-shadow:0 0 9px 3px rgba(233,200,119,.55);animation:h2h-fly 7.1s ease-in-out infinite;animation-delay:6.0s;"></div>
+      <div style="position:absolute;right:12%;top:-12%;width:150px;height:120vh;background:linear-gradient(to bottom,rgba(247,224,170,.16),rgba(247,224,170,0));transform:rotate(16deg);transform-origin:top center;filter:blur(3px);"></div>
+      <div style="position:absolute;right:30%;top:-14%;width:90px;height:120vh;background:linear-gradient(to bottom,rgba(247,224,170,.12),rgba(247,224,170,0));transform:rotate(13deg);transform-origin:top center;filter:blur(3px);"></div>
+    </div>
+
+  <header style="position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:11px;padding:22px 30px;">
+    <div style="display:flex;align-items:center;gap:11px;">
+    <div style="width:34px;height:34px;border-radius:11px;background:linear-gradient(150deg,#d98f54,#b96f4c);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(185,111,76,.3);">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 14c3-1 5-1 8 0M20 14c-3-1-5-1-8 0" stroke="#fdf8ee" stroke-width="2.4" stroke-linecap="round"/><circle cx="6.5" cy="11.5" r="1.4" fill="#fdf8ee"/><circle cx="17.5" cy="11.5" r="1.4" fill="#fdf8ee"/></svg>
+    </div>
+    <div>
+      <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:19px;letter-spacing:.3px;line-height:1;color:var(--ink);">H2H</div>
+      <div style="font-size:11.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--soft);margin-top:2px;">hand to hand</div>
+    </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:9px;">
+    <button onClick="{{ onToggleSpirit }}" title="Reveal Kit's Myobu spirit form" style="{{ spiritBtnStyle }}">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2.5l1.9 5.4 5.6.3-4.4 3.5 1.5 5.4L12 19.4 7 17.5l1.5-5.4L4.1 8.6l5.6-.3L12 2.5z" fill="{{ spiritStarFill }}"/></svg>
+      {{ spiritBtnLabel }}
+    </button>
+    <button onClick="{{ onToggleTheme }}" title="Change the time of day" style="display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--parch);border-radius:13px;padding:8px 14px;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:13.5px;color:var(--ink);box-shadow:0 5px 16px -10px rgba(74,65,51,.5);transition:background .3s ease,color .3s ease;">
+      <sc-if value="{{ isDay }}" hint-placeholder-val="{{ true }}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.6" fill="#e9a23b"/><g stroke="#e9a23b" stroke-width="2" stroke-linecap="round"><path d="M12 2.4v2.6M12 19v2.6M2.4 12H5M19 12h2.6M5.1 5.1l1.8 1.8M17.1 17.1l1.8 1.8M18.9 5.1l-1.8 1.8M6.9 17.1l-1.8 1.8"/></g></svg></sc-if>
+      <sc-if value="{{ isDusk }}" hint-placeholder-val="{{ false }}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M6.6 14a5.4 5.4 0 0110.8 0z" fill="#e2802f"/><path d="M2.5 14h2.4M19.1 14h2.4M12 6.2v2.3M5.6 8.2l1.6 1.6M18.4 8.2l-1.6 1.6" stroke="#e2802f" stroke-width="1.8" stroke-linecap="round"/><path d="M2.5 17.6h19" stroke="#c76a2c" stroke-width="2" stroke-linecap="round"/></svg></sc-if>
+      <sc-if value="{{ isNight }}" hint-placeholder-val="{{ false }}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20.2 14.8A8 8 0 119.4 4 6.6 6.6 0 0020.2 14.8z" fill="#8b93c6"/><circle cx="16.5" cy="6.5" r="1" fill="#8b93c6"/><circle cx="19" cy="10" r=".8" fill="#8b93c6"/></svg></sc-if>
+      <span>{{ themeLabel }}</span>
+    </button>
+    </div>
+  </header>
+
+  <div style="position:absolute;left:0;bottom:0;z-index:2;width:620px;height:600px;max-width:80vw;pointer-events:none;">
+    <svg viewBox="0 0 620 600" preserveAspectRatio="xMinYMax slice" width="100%" height="100%" style="position:absolute;inset:0;overflow:visible;">
+      <defs>
+        <filter id="h2h-sglow" x="-180%" y="-180%" width="460%" height="460%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <!-- valley mist behind cliff edge -->
+      <ellipse cx="500" cy="528" rx="260" ry="80" fill="var(--mist)" opacity="0.5"/>
+      <ellipse cx="430" cy="560" rx="200" ry="60" fill="var(--mist)" opacity="0.6"/>
+      <!-- CLIFF rock face (anchored to left + bottom) -->
+      <polygon points="0,332 168,332 146,474 0,492" fill="var(--rock1)"/>
+      <polygon points="168,332 312,350 292,504 150,476" fill="var(--rock1)"/>
+      <polygon points="312,350 404,344 384,520 332,566 292,504" fill="var(--rock2)"/>
+      <polygon points="380,366 404,344 388,548 360,544" fill="var(--rock3)"/>
+      <polygon points="0,492 150,476 150,566 112,600 0,600" fill="var(--rock2)"/>
+      <polygon points="150,476 292,504 332,566 256,600 150,566" fill="var(--rock3)"/>
+      <polygon points="0,594 112,600 150,566 256,600 332,566 372,598 372,600 0,600" fill="var(--rock3)"/>
+      <!-- grass cap on the ledge -->
+      <polygon points="0,318 168,316 312,332 404,326 398,346 312,350 168,332 0,332" fill="var(--foliage)"/>
+      <polygon points="0,300 124,280 258,286 372,318 404,326 312,332 168,316 0,318" fill="var(--hill2)"/>
+      <!-- grass blades + a little mushroom -->
+      <polygon points="156,288 162,266 168,288" fill="var(--hill2)"/>
+      <polygon points="208,292 214,270 220,292" fill="var(--foliage)"/>
+      <polygon points="300,302 306,282 312,302" fill="var(--foliage)"/>
+      <polygon points="346,312 352,294 358,312" fill="var(--hill2)"/>
+      <rect x="96" y="270" width="6" height="12" rx="2" fill="#efe6d2"/>
+      <polygon points="89,272 109,272 99,260" fill="#c06a4a"/>
+      <circle cx="95" cy="267" r="1.6" fill="#f7efe0"/>
+      <circle cx="103" cy="269" r="1.4" fill="#f7efe0"/>
+      <!-- contact shadow under fox -->
+      <ellipse cx="256" cy="302" rx="92" ry="15" fill="rgba(74,65,51,.18)"/>
+      <g onClick="{{ onPet }}" transform="translate(126,80)" style="pointer-events:auto;cursor:pointer;">
+        <g ref="{{ foxFloat }}">
+            <g ref="{{ foxState }}" style="transform-box:fill-box;transform-origin:50% 100%;">
+              <!-- TAIL -->
+              <g ref="{{ foxTail }}" style="transform-box:fill-box;transform-origin:8% 96%;">
+                <polygon points="158,150 214,150 226,108 168,132" fill="#d98f54"/>
+                <polygon points="168,132 226,108 220,82 182,110" fill="#c87a45"/>
+                <polygon points="182,110 220,82 200,64 178,96" fill="#f3ead8"/>
+                <polygon points="158,150 168,132 182,170" fill="#c87a45"/>
+                <g ref="{{ foxGlowTailTip }}" style="opacity:0;">
+                  <ellipse cx="196" cy="84" rx="15" ry="11" fill="#b6e6ff" filter="url(#h2h-sglow)" opacity="0.62" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-spiritpulse 4.2s ease-in-out infinite;animation-delay:.9s;"/>
+                </g>
+              </g>
+              <!-- BODY -->
+              <g ref="{{ foxBody }}" style="transform-box:fill-box;transform-origin:50% 92%;">
+                <polygon points="96,124 164,124 178,212 82,212" fill="#d98f54"/>
+                <polygon points="96,124 130,118 164,124 130,150" fill="#e3a86b"/>
+                <polygon points="116,132 144,132 152,212 108,212" fill="#f3ead8"/>
+                <polygon points="86,168 104,168 100,214 80,214" fill="#c87a45"/>
+                <polygon points="156,168 174,168 180,214 160,214" fill="#c87a45"/>
+                <polygon points="98,206 122,206 120,222 96,222" fill="#f3ead8"/>
+                <polygon points="138,206 162,206 164,222 140,222" fill="#f3ead8"/>
+                <g ref="{{ foxGlowBody }}" style="opacity:0;">
+                  <ellipse cx="130" cy="172" rx="13" ry="19" fill="#7ec8f5" filter="url(#h2h-sglow)" opacity="0.42" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-spiritpulse 4.2s ease-in-out infinite;"/>
+                  <ellipse cx="109" cy="216" rx="10" ry="6" fill="#b6e6ff" filter="url(#h2h-sglow)" opacity="0.6" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-spiritpulse 4.2s ease-in-out infinite;animation-delay:1.1s;"/>
+                  <ellipse cx="152" cy="216" rx="10" ry="6" fill="#b6e6ff" filter="url(#h2h-sglow)" opacity="0.6" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-spiritpulse 4.2s ease-in-out infinite;animation-delay:1.6s;"/>
+                </g>
+              </g>
+              <!-- ORB (carried bundle) -->
+              <g ref="{{ foxOrbWrap }}" style="opacity:0;">
+                <g ref="{{ foxOrb }}" style="transform-box:fill-box;transform-origin:50% 50%;">
+                  <circle cx="130" cy="196" r="26" fill="rgba(233,200,119,.28)"/>
+                  <circle cx="130" cy="196" r="16" fill="#e9c877"/>
+                  <polygon points="130,180 144,196 130,212 116,196" fill="#f4e3a6"/>
+                  <circle cx="124" cy="190" r="4" fill="#fff8df"/>
+                </g>
+              </g>
+              <!-- HEAD -->
+              <g ref="{{ foxHead }}" style="transform-box:fill-box;transform-origin:50% 96%;">
+                <g ref="{{ foxEarL }}" style="transform-box:fill-box;transform-origin:60% 100%;">
+                  <polygon points="92,88 76,28 124,66" fill="#c87a45"/>
+                  <polygon points="98,82 86,44 118,66" fill="#5b6b8c"/>
+                </g>
+                <g ref="{{ foxEarR }}" style="transform-box:fill-box;transform-origin:40% 100%;">
+                  <polygon points="168,88 184,28 136,66" fill="#c87a45"/>
+                  <polygon points="162,82 174,44 142,66" fill="#5b6b8c"/>
+                </g>
+                <polygon points="98,70 130,56 162,70 170,100 90,100" fill="#d98f54"/>
+                <polygon points="98,70 130,56 162,70 130,94" fill="#e3a86b"/>
+                <polygon points="90,100 76,116 116,128 110,102" fill="#f3ead8"/>
+                <polygon points="170,100 184,116 144,128 150,102" fill="#f3ead8"/>
+                <polygon points="106,102 130,142 154,102 130,120" fill="#f7f0e0"/>
+                <polygon points="106,102 130,120 154,102" fill="#e9dcc2"/>
+                <g ref="{{ foxGaze }}" style="transform-box:fill-box;">
+                  <polygon points="123,126 137,126 130,138" fill="#4a4133"/>
+                  <g ref="{{ foxEyes }}" style="transform-box:fill-box;transform-origin:50% 50%;">
+                    <polygon points="108,100 121,97 119,109 107,107" fill="#3a3328"/>
+                    <polygon points="152,100 139,97 141,109 153,107" fill="#3a3328"/>
+                    <g ref="{{ foxGlowEyes }}" style="opacity:0;">
+                      <circle cx="113" cy="103" r="7" fill="#7ec8f5" filter="url(#h2h-sglow)" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-spiritpulse 4.2s ease-in-out infinite;"/>
+                      <circle cx="147" cy="103" r="7" fill="#7ec8f5" filter="url(#h2h-sglow)" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-spiritpulse 4.2s ease-in-out infinite;animation-delay:.5s;"/>
+                    </g>
+                    <circle cx="112" cy="101" r="1.7" fill="#fff"/>
+                    <circle cx="148" cy="101" r="1.7" fill="#fff"/>
+                  </g>
+                </g>
+              </g>
+              <!-- SPARKLES (success) -->
+              <g ref="{{ foxSparkle }}" style="opacity:0;">
+                <polygon points="70,70 74,82 86,86 74,90 70,102 66,90 54,86 66,82" fill="#f4e3a6" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-sparkle 1.5s ease-out infinite;animation-delay:0s;"/>
+                <polygon points="196,76 199,86 209,89 199,92 196,102 193,92 183,89 193,86" fill="#fff8df" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-sparkle 1.5s ease-out infinite;animation-delay:.35s;"/>
+                <polygon points="120,34 123,44 133,47 123,50 120,60 117,50 107,47 117,44" fill="#f4e3a6" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-sparkle 1.5s ease-out infinite;animation-delay:.7s;"/>
+                <polygon points="170,40 172,48 180,50 172,52 170,60 168,52 160,50 168,48" fill="#fff8df" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-sparkle 1.5s ease-out infinite;animation-delay:.2s;"/>
+              </g>
+              <!-- ZZZ (sleepy) -->
+              <g ref="{{ foxZzz }}" style="opacity:0;">
+                <text x="166" y="78" font-family="Fredoka, sans-serif" font-weight="600" font-size="15" fill="#8b93c6" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-zzz 3.6s ease-out infinite;animation-delay:0s;">z</text>
+                <text x="176" y="64" font-family="Fredoka, sans-serif" font-weight="600" font-size="19" fill="#7c84ba" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-zzz 3.6s ease-out infinite;animation-delay:1.2s;">z</text>
+                <text x="188" y="50" font-family="Fredoka, sans-serif" font-weight="600" font-size="23" fill="#6e76ac" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-zzz 3.6s ease-out infinite;animation-delay:2.4s;">z</text>
+              </g>
+              <!-- FOOD (eating) -->
+              <g ref="{{ foxFood }}" style="opacity:0;">
+                <g style="transform-box:fill-box;transform-origin:50% 100%;animation:h2h-foodbob 1.9s ease-in-out infinite;">
+                  <ellipse cx="130" cy="158" rx="15" ry="6" fill="rgba(74,65,51,.16)"/>
+                  <circle cx="124" cy="150" r="6.5" fill="#c0506a"/>
+                  <circle cx="135" cy="152" r="5.5" fill="#a8415a"/>
+                  <circle cx="130" cy="146" r="5" fill="#cf6178"/>
+                  <polygon points="124,143 128,135 132,143" fill="#7a8b5a"/>
+                  <circle cx="122" cy="148" r="1.3" fill="#f2c3cf"/>
+                </g>
+              </g>
+            </g>
+            <!-- FOXFIRE (kitsunebi) -->
+            <g ref="{{ foxFoxfire }}" style="opacity:0;">
+              <g style="transform-box:fill-box;transform-origin:50% 100%;animation:h2h-foxfire 3.4s ease-in-out infinite;">
+                <path d="M62,66 C72,54 73,44 62,30 C51,44 52,54 62,66 Z" fill="#8fd2f5" filter="url(#h2h-sglow)" opacity="0.85"/>
+                <path d="M62,62 C68,53 69,46 62,38 C55,46 56,53 62,62 Z" fill="#e8fbff"/>
+              </g>
+              <g style="transform-box:fill-box;transform-origin:50% 100%;animation:h2h-foxfire2 3.9s ease-in-out infinite;animation-delay:1.1s;">
+                <path d="M210,58 C218,48 219,40 210,28 C201,40 202,48 210,58 Z" fill="#8fd2f5" filter="url(#h2h-sglow)" opacity="0.8"/>
+                <path d="M210,55 C215,47 216,42 210,35 C204,42 205,47 210,55 Z" fill="#e8fbff"/>
+              </g>
+              <g style="transform-box:fill-box;transform-origin:50% 100%;animation:h2h-foxfire 4.6s ease-in-out infinite;animation-delay:.5s;">
+                <path d="M36,118 C42,110 43,104 36,95 C29,104 30,110 36,118 Z" fill="#b6e6ff" filter="url(#h2h-sglow)" opacity="0.75"/>
+                <path d="M36,115 C40,109 41,105 36,99 C31,105 32,109 36,115 Z" fill="#e8fbff"/>
+              </g>
+            </g>
+            <!-- SPIRIT PARTICLES -->
+            <g ref="{{ foxGlowParticles }}" style="opacity:0;">
+              <circle cx="108" cy="128" r="3" fill="#7ec8f5" filter="url(#h2h-sglow)" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-sp1 4.6s ease-out infinite;"/>
+              <circle cx="152" cy="128" r="2.5" fill="#b6e6ff" filter="url(#h2h-sglow)" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-sp2 5.2s ease-out infinite;animation-delay:1.3s;"/>
+              <circle cx="130" cy="116" r="3" fill="#7ec8f5" filter="url(#h2h-sglow)" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-sp3 4.8s ease-out infinite;animation-delay:.7s;"/>
+              <circle cx="177" cy="122" r="2.5" fill="#b6e6ff" filter="url(#h2h-sglow)" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-sp4 5.5s ease-out infinite;animation-delay:2.1s;"/>
+              <circle cx="162" cy="112" r="2" fill="#97d8f7" filter="url(#h2h-sglow)" style="transform-box:fill-box;transform-origin:50% 50%;animation:h2h-sp5 4.2s ease-out infinite;animation-delay:3.4s;"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+      <div style="position:absolute;left:22px;top:54px;max-width:188px;font-family:'Fredoka',sans-serif;font-size:13.5px;line-height:1.35;color:var(--soft);letter-spacing:.2px;pointer-events:none;text-shadow:0 1px 2px rgba(253,248,238,.8);">{{ mascotCaption }}</div>
+      <button onClick="{{ onPet }}" title="Give Kit a little pet" style="position:absolute;left:22px;top:104px;pointer-events:auto;display:flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--parch);border-radius:13px;padding:8px 14px;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:13px;color:var(--ink);box-shadow:0 6px 18px -10px rgba(74,65,51,.55);transition:transform .15s ease;" style-hover="transform:translateY(-2px);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="15.5" rx="5" ry="4" fill="#d98f54"/><ellipse cx="6.5" cy="9.5" rx="2" ry="2.6" fill="#c87a45"/><ellipse cx="11" cy="6.8" rx="2" ry="2.8" fill="#c87a45"/><ellipse cx="16" cy="8" rx="2" ry="2.7" fill="#c87a45"/><ellipse cx="19.5" cy="12" rx="1.8" ry="2.4" fill="#c87a45"/></svg>
+        Pet Kit
+      </button>
+    </div>
+
+  <main style="position:relative;z-index:3;display:flex;justify-content:flex-end;align-items:center;min-height:calc(100vh - 92px);margin:0;padding:0 clamp(20px,6vw,84px) 64px;pointer-events:none;">
+
+    <!-- CARD -->
+    <section style="flex:none;width:min(460px,92vw);pointer-events:auto;">
+      <div style="background:var(--parch);border-radius:26px;box-shadow:0 18px 50px -18px rgba(74,65,51,.32),0 2px 0 rgba(255,255,255,.6) inset;border:1px solid var(--line);overflow:hidden;">
+
+        <!-- UPLOAD -->
+        <sc-if value="{{ isUpload }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:30px 30px 28px;animation:h2h-viewin .5s ease both;">
+            <h1 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:25px;margin:0 0 4px;color:var(--ink);">What should Kit carry?</h1>
+            <p style="margin:0 0 20px;font-size:14.5px;color:var(--soft);line-height:1.5;">Hand off a file or a note. It travels once, then the trail fades.</p>
+
+            <div style="display:flex;gap:6px;background:rgba(122,139,90,.1);border-radius:14px;padding:5px;margin-bottom:18px;">
+              <button onClick="{{ onFilesTab }}" style="{{ filesTabStyle }}">Files</button>
+              <button onClick="{{ onTextTab }}" style="{{ textTabStyle }}">Text</button>
+            </div>
+
+            <sc-if value="{{ isFilesTab }}" hint-placeholder-val="{{ true }}">
+              <div onClick="{{ onPick }}" onDragOver="{{ onDragOver }}" onDragLeave="{{ onDragLeave }}" onDrop="{{ onDrop }}" style="{{ dropStyle }}">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" style="margin-bottom:8px;"><path d="M12 16V6m0 0l-4 4m4-4l4 4" stroke="#d98f54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19h14" stroke="#caa86a" stroke-width="2" stroke-linecap="round"/></svg>
+                <div style="font-family:'Fredoka',sans-serif;font-size:15.5px;color:var(--ink);">{{ dropTitle }}</div>
+                <div style="font-size:12.5px;color:var(--soft);margin-top:3px;">Drag it in, or click to browse · up to 200&nbsp;MB</div>
+              </div>
+              <input ref="{{ fileInput }}" type="file" multiple onChange="{{ onFileChange }}" style="display:none;"/>
+              <sc-for list="{{ files }}" as="f" hint-placeholder-count="0">
+                <div style="display:flex;align-items:center;gap:10px;background:rgba(202,168,106,.12);border-radius:12px;padding:9px 12px;margin-top:8px;">
+                  <div style="width:30px;height:30px;border-radius:8px;background:rgba(217,143,84,.18);display:flex;align-items:center;justify-content:center;flex:none;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M14 3v5h5" stroke="#b96f4c" stroke-width="2" stroke-linejoin="round"/><path d="M14 3H6v18h12V8l-4-5z" stroke="#b96f4c" stroke-width="2" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div style="flex:1;min-width:0;">
+                    <div style="font-size:13.5px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ f.name }}</div>
+                    <div style="font-size:11.5px;color:var(--soft);">{{ f.sizeLabel }}</div>
+                  </div>
+                  <button onClick="{{ f.remove }}" style="background:none;border:none;cursor:pointer;color:var(--soft);font-size:18px;line-height:1;padding:4px;">×</button>
+                </div>
+              </sc-for>
+            </sc-if>
+
+            <sc-if value="{{ isTextTab }}" hint-placeholder-val="{{ false }}">
+              <textarea ref="{{ textInput }}" onInput="{{ onTextInput }}" placeholder="Write the note Kit should deliver…" class="h2h-scroll" style="width:100%;min-height:128px;resize:vertical;border:1.5px solid var(--line);border-radius:16px;background:rgba(255,255,255,.5);padding:14px 15px;font-family:'Nunito',sans-serif;font-size:14.5px;color:var(--ink);line-height:1.55;outline:none;"></textarea>
+            </sc-if>
+
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
+              <label style="flex:1 1 150px;display:flex;align-items:center;gap:9px;cursor:pointer;background:rgba(91,107,140,.08);border-radius:13px;padding:11px 13px;">
+                <span onClick="{{ onTogglePass }}" style="{{ passToggleStyle }}"><span style="{{ passKnobStyle }}"></span></span>
+                <span style="font-size:13px;color:var(--ink);font-weight:600;">Lock with passcode</span>
+              </label>
+              <div style="flex:1 1 130px;display:flex;align-items:center;gap:8px;background:rgba(122,139,90,.1);border-radius:13px;padding:5px 6px 5px 13px;">
+                <span style="font-size:13px;color:var(--soft);">Fades in</span>
+                <select onChange="{{ onExpiry }}" style="flex:1;border:none;background:transparent;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:var(--ink);outline:none;cursor:pointer;">
+                  <option value="1h">1 hour</option>
+                  <option value="1d" selected>1 day</option>
+                  <option value="7d">7 days</option>
+                </select>
+              </div>
+            </div>
+
+            <sc-if value="{{ requirePass }}" hint-placeholder-val="{{ false }}">
+              <input ref="{{ creatorPassInput }}" onInput="{{ onCreatorPass }}" placeholder="Set a passcode…" style="width:100%;margin-top:10px;border:1.5px solid rgba(91,107,140,.3);border-radius:13px;background:rgba(255,255,255,.5);padding:12px 14px;font-family:'Nunito',sans-serif;font-size:14px;color:var(--ink);outline:none;"/>
+            </sc-if>
+
+            <sc-if value="{{ sending }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:18px;">
+                <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--soft);margin-bottom:7px;"><span style="font-family:'Fredoka',sans-serif;color:var(--ink);">Kit's on the way…</span><span style="font-weight:700;color:#b96f4c;">{{ progressLabel }}</span></div>
+                <div style="height:9px;border-radius:9px;background:rgba(122,139,90,.16);overflow:hidden;">
+                  <div ref="{{ progressBar }}" style="height:100%;width:0%;border-radius:9px;background:linear-gradient(90deg,#caa86a,#d98f54);transition:width .18s ease;"></div>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ notSending }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ onSend }}" style="{{ sendStyle }}">{{ sendLabel }}</button>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <!-- SUCCESS -->
+        <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:30px;animation:h2h-viewin .5s ease both;">
+            <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(122,139,90,.14);color:#5e7045;font-weight:700;font-size:12.5px;padding:6px 12px;border-radius:20px;margin-bottom:14px;">
+              <span style="width:7px;height:7px;border-radius:50%;background:#7a8b5a;"></span>Delivered
+            </div>
+            <h1 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;margin:0 0 4px;color:var(--ink);">Kit's waiting at the other end.</h1>
+            <p style="margin:0 0 20px;font-size:14px;color:var(--soft);line-height:1.5;">Share this link. Whoever opens it gets one delivery.</p>
+
+            <div style="font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:var(--soft);margin-bottom:7px;">Share link</div>
+            <div style="display:flex;gap:8px;align-items:center;background:rgba(122,139,90,.1);border-radius:14px;padding:6px 6px 6px 15px;margin-bottom:18px;">
+              <span style="flex:1;min-width:0;font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ shareUrl }}</span>
+              <button onClick="{{ onCopyLink }}" style="{{ copyLinkStyle }}">{{ copyLinkLabel }}</button>
+            </div>
+
+            <div style="position:relative;border-radius:16px;padding:16px 16px 15px;background:linear-gradient(150deg,rgba(217,143,84,.12),rgba(202,168,106,.14));border:1.5px dashed rgba(185,111,76,.4);animation:h2h-reveal .7s .15s ease both;">
+              <div style="display:flex;align-items:center;gap:7px;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:#b96f4c;font-weight:700;margin-bottom:8px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 20l-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 2z" fill="#caa86a"/></svg>
+                Recall token — keep it safe
+              </div>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <code style="flex:1;font-family:'Fredoka',sans-serif;font-size:21px;letter-spacing:3px;font-weight:600;color:#a85e3c;animation:h2h-pulse 2.2s ease-in-out 3;border-radius:8px;padding:2px 6px;">{{ deleteToken }}</code>
+                <button onClick="{{ onCopyToken }}" style="{{ copyTokenStyle }}">{{ copyTokenLabel }}</button>
+              </div>
+              <p style="margin:9px 0 0;font-size:12.5px;color:var(--soft);line-height:1.45;">This is shown once. It's the only way to call the delivery back before it fades.</p>
+            </div>
+
+            <div style="display:flex;gap:10px;margin-top:20px;">
+              <button onClick="{{ onOpenLink }}" style="flex:1;border:none;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;color:#fff;background:linear-gradient(150deg,#d98f54,#b96f4c);border-radius:14px;padding:13px;box-shadow:0 8px 18px -6px rgba(185,111,76,.55);">Open the link →</button>
+              <button onClick="{{ onNewShare }}" style="flex:none;border:1.5px solid var(--line);cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;color:var(--ink);background:transparent;border-radius:14px;padding:13px 18px;">Send another</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- RETRIEVE: PASSCODE GATE -->
+        <sc-if value="{{ showPasscode }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:h2h-viewin .5s ease both;">
+            <div style="display:flex;align-items:center;gap:8px;padding:13px 18px;background:rgba(122,139,90,.1);border-bottom:1px solid var(--line);">
+              <span style="width:9px;height:9px;border-radius:50%;background:#caa86a;"></span>
+              <span style="font-size:12.5px;color:var(--soft);font-weight:600;letter-spacing:.3px;">{{ shareUrl }}</span>
+            </div>
+            <div style="padding:30px;">
+              <h1 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:23px;margin:0 0 4px;color:var(--ink);">Kit's holding it close.</h1>
+              <p style="margin:0 0 20px;font-size:14px;color:var(--soft);line-height:1.5;">This delivery is locked. What's the passcode?</p>
+              <input ref="{{ retrievePassInput }}" onInput="{{ onRetrievePass }}" onKeyDown="{{ onPassKey }}" placeholder="Passcode" style="{{ retrievePassStyle }}"/>
+              <sc-if value="{{ passWrong }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;align-items:center;gap:7px;margin-top:10px;font-size:13px;color:#b96f4c;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#b96f4c" stroke-width="2"/><path d="M8 14c1-1 2-1.4 4-1.4S15 13 16 14" stroke="#b96f4c" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="10" r="1" fill="#b96f4c"/><circle cx="15" cy="10" r="1" fill="#b96f4c"/></svg>
+                  That's not it. Kit shakes its head gently — try again?
+                </div>
+              </sc-if>
+              <sc-if value="{{ demoHint }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:10px;font-size:12px;color:var(--soft);font-style:italic;">psst — for this demo the passcode is <b style="color:var(--ink);font-style:normal;">forest</b></div>
+              </sc-if>
+              <button onClick="{{ onSubmitPass }}" style="width:100%;margin-top:18px;border:none;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:15.5px;color:#fff;background:linear-gradient(150deg,#7a8b5a,#5e7045);border-radius:14px;padding:14px;box-shadow:0 8px 18px -6px rgba(94,112,69,.5);">Unlock</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- RETRIEVE: CONTENT -->
+        <sc-if value="{{ showContent }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:h2h-viewin .5s ease both;">
+            <div style="display:flex;align-items:center;gap:8px;padding:13px 18px;background:rgba(122,139,90,.1);border-bottom:1px solid var(--line);">
+              <span style="width:9px;height:9px;border-radius:50%;background:#7a8b5a;"></span>
+              <span style="font-size:12.5px;color:var(--soft);font-weight:600;letter-spacing:.3px;">{{ shareUrl }}</span>
+            </div>
+            <div style="padding:28px 30px 30px;">
+              <h1 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;margin:0 0 4px;color:var(--ink);">Kit brought you something.</h1>
+              <p style="margin:0 0 18px;font-size:14px;color:var(--soft);line-height:1.5;">{{ contentSubtitle }}</p>
+
+              <sc-if value="{{ sentIsFiles }}" hint-placeholder-val="{{ false }}">
+                <sc-for list="{{ sentFiles }}" as="f" hint-placeholder-count="2">
+                  <div style="display:flex;align-items:center;gap:11px;background:rgba(202,168,106,.12);border-radius:13px;padding:11px 13px;margin-bottom:9px;">
+                    <div style="width:34px;height:34px;border-radius:9px;background:rgba(217,143,84,.18);display:flex;align-items:center;justify-content:center;flex:none;">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 3v5h5" stroke="#b96f4c" stroke-width="2" stroke-linejoin="round"/><path d="M14 3H6v18h12V8l-4-5z" stroke="#b96f4c" stroke-width="2" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div style="flex:1;min-width:0;">
+                      <div style="font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ f.name }}</div>
+                      <div style="font-size:12px;color:var(--soft);">{{ f.sizeLabel }}</div>
+                    </div>
+                  </div>
+                </sc-for>
+              </sc-if>
+              <sc-if value="{{ sentIsText }}" hint-placeholder-val="{{ false }}">
+                <div class="h2h-scroll" style="max-height:180px;overflow:auto;background:rgba(255,255,255,.55);border:1.5px solid var(--line);border-radius:14px;padding:15px 16px;font-size:14.5px;line-height:1.6;color:var(--ink);white-space:pre-wrap;">{{ sentText }}</div>
+              </sc-if>
+
+              <button onClick="{{ onDownload }}" style="{{ downloadStyle }}">{{ downloadLabel }}</button>
+              <sc-if value="{{ downloaded }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:12px 0 0;text-align:center;font-size:13px;color:#5e7045;font-weight:600;">{{ handoffNote }}</p>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- EXPIRED -->
+        <sc-if value="{{ isExpired }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:36px 30px;text-align:center;animation:h2h-viewin .5s ease both;">
+            <h1 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:23px;margin:0 0 8px;color:var(--ink);">The trail's gone cold.</h1>
+            <p style="margin:0 auto 22px;max-width:300px;font-size:14.5px;color:var(--soft);line-height:1.55;">Kit looked everywhere, but this delivery has already faded — or was never here. Links last only as long as you set them to.</p>
+            <button onClick="{{ onNewShare }}" style="border:none;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;color:#fff;background:linear-gradient(150deg,#d98f54,#b96f4c);border-radius:14px;padding:13px 26px;box-shadow:0 8px 18px -6px rgba(185,111,76,.5);">Send something new</button>
+          </div>
+        </sc-if>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- DEMO DOCK -->
+  <div style="position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:6;display:flex;align-items:center;gap:4px;background:rgba(253,248,238,.9);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:16px;padding:6px;box-shadow:0 10px 30px -10px rgba(74,65,51,.35);">
+    <span style="font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--soft);padding:0 8px 0 6px;font-weight:700;">Preview</span>
+    <button onClick="{{ onNewShare }}" style="{{ demoUploadStyle }}">Upload</button>
+    <button onClick="{{ onDemoRetrieve }}" style="{{ demoRetrieveStyle }}">Locked link</button>
+    <button onClick="{{ onDemoExpired }}" style="{{ demoExpiredStyle }}">Expired</button>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;day&quot;,&quot;options&quot;:[&quot;day&quot;,&quot;dusk&quot;,&quot;night&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;reduceMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;spiritMode&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  foxFloat = React.createRef();
+  foxState = React.createRef();
+  foxTail = React.createRef();
+  foxBody = React.createRef();
+  foxHead = React.createRef();
+  foxEarL = React.createRef();
+  foxEarR = React.createRef();
+  foxEyes = React.createRef();
+  foxOrbWrap = React.createRef();
+  foxOrb = React.createRef();
+  foxSparkle = React.createRef();
+  foxZzz = React.createRef();
+  foxFood = React.createRef();
+  foxGlowEyes = React.createRef();
+  foxGlowTailTip = React.createRef();
+  foxGlowBody = React.createRef();
+  foxGlowParticles = React.createRef();
+  foxFoxfire = React.createRef();
+  foxGaze = React.createRef();
+  foxShadow = React.createRef();
+  fileInput = React.createRef();
+  textInput = React.createRef();
+  creatorPassInput = React.createRef();
+  retrievePassInput = React.createRef();
+  progressBar = React.createRef();
+
+  state = {
+    view: 'upload', tab: 'files',
+    files: [], text: '',
+    requirePass: false, creatorPass: '', expiry: '1d',
+    sending: false, progress: 0,
+    shareId: '', deleteToken: '',
+    sharePassRequired: false, sharePass: '',
+    sentKind: 'files', sentFiles: [], sentText: '',
+    retrievePass: '', passWrong: false, unlocked: false, downloaded: false,
+    demoHint: false,
+    mascot: 'idle',
+    theme: null,
+    spirit: null,
+    copied: ''
+  };
+
+  spiritOn() {
+    const s = this.state.spirit;
+    if (s !== null && s !== undefined) return s;
+    return this.props.spiritMode === true;
+  }
+
+  componentDidMount() {
+    this._pointer = { x: 0, y: 0, has: false };
+    this._prevMascot = this.state.mascot;
+    this._prevProgress = this.state.progress;
+    this._prevSpirit = this.state.spirit;
+    this.applyTheme();
+    this.applyMascot(this.state.mascot);
+    if (this.progressBar.current) this.progressBar.current.style.width = this.state.progress + '%';
+    window.addEventListener('pointermove', this._onMove);
+    this.scheduleIdleAction();
+    this.applySpiritMode();
+  }
+
+  applySpiritMode() {
+    const on = this.spiritOn() && !this.props.reduceMotion;
+    const v = on ? '1' : '0';
+    [this.foxGlowEyes, this.foxGlowTailTip, this.foxGlowBody, this.foxGlowParticles, this.foxFoxfire].forEach(r => {
+      if (r && r.current) r.current.style.opacity = v;
+    });
+    // pale celestial coat + ethereal amber aura on the fox silhouette
+    if (this.foxState && this.foxState.current) {
+      this.foxState.current.style.filter = on
+        ? 'saturate(.22) brightness(1.32) hue-rotate(8deg) drop-shadow(0 0 9px rgba(140,205,250,.7)) drop-shadow(0 0 24px rgba(175,225,255,.5))'
+        : 'none';
+    }
+  }
+  componentWillUnmount() {
+    clearInterval(this._iv);
+    clearTimeout(this._petT);
+    clearTimeout(this._idleT);
+    clearTimeout(this._idleRevert);
+    window.removeEventListener('pointermove', this._onMove);
+    if (this._rafGaze) cancelAnimationFrame(this._rafGaze);
+  }
+
+  scheduleIdleAction() {
+    clearTimeout(this._idleT);
+    const delay = 7000 + Math.random() * 8000;
+    this._idleT = setTimeout(() => {
+      if (this.state.mascot === 'idle' && !document.hidden && !this.props.reduceMotion && this.state.view === 'upload') {
+        const acts = ['sleepy', 'eating', 'stretch', 'lookaround', 'lookaround'];
+        const pick = acts[Math.floor(Math.random() * acts.length)];
+        const durs = { sleepy: 5000, eating: 4200, stretch: 2600, lookaround: 3000 };
+        this.setState({ mascot: pick });
+        clearTimeout(this._idleRevert);
+        this._idleRevert = setTimeout(() => {
+          if (this.state.mascot === pick) this.setState({ mascot: 'idle' });
+        }, durs[pick] || 3000);
+      }
+      this.scheduleIdleAction();
+    }, delay);
+  }
+
+  _onMove = (e) => {
+    this._pointer = { x: e.clientX, y: e.clientY, has: true };
+    if (this._rafGaze) return;
+    this._rafGaze = requestAnimationFrame(() => { this._rafGaze = null; this.updateGaze(); });
+  };
+
+  updateGaze() {
+    const g = this.foxGaze && this.foxGaze.current; if (!g) return;
+    const head = this.foxHead && this.foxHead.current;
+    if (!this._calm || this.props.reduceMotion || !this._pointer || !this._pointer.has) {
+      g.style.transform = 'translate(0px,0px)';
+      if (head && this._calm) head.style.transform = (this._headBase || 'none');
+      return;
+    }
+    const fl = this.foxFloat && this.foxFloat.current; if (!fl) return;
+    const r = fl.getBoundingClientRect();
+    const cx = r.left + r.width / 2, cy = r.top + r.height * 0.40;
+    const dx = this._pointer.x - cx, dy = this._pointer.y - cy;
+    const tx = Math.max(-6, Math.min(6, dx * 0.02));
+    const ty = Math.max(-4, Math.min(4, dy * 0.02));
+    g.style.transform = 'translate(' + tx + 'px,' + ty + 'px)';
+    if (head) {
+      const rot = Math.max(-5, Math.min(5, dx * 0.013));
+      const base = (this._headBase && this._headBase !== 'none') ? this._headBase + ' ' : '';
+      head.style.transform = base + 'rotate(' + rot + 'deg)';
+    }
+  }
+
+  onPet = () => {
+    if (this.props.reduceMotion) return;
+    const cur = this.state.mascot;
+    if (cur === 'carrying' || cur === 'success' || cur === 'handoff') return;
+    clearTimeout(this._idleRevert);
+    const playHop = () => {
+      const stG = this.foxState && this.foxState.current;
+      const tail = this.foxTail && this.foxTail.current;
+      const spk = this.foxSparkle && this.foxSparkle.current;
+      if (stG) { stG.style.animation = 'none'; void stG.offsetWidth; stG.style.animation = 'h2h-hop 0.7s ease-in-out 1'; }
+      if (tail) { tail.style.animation = 'h2h-tailfast 0.28s ease-in-out 5'; }
+      if (spk) { spk.style.opacity = 1; }
+      clearTimeout(this._petT);
+      this._petT = setTimeout(() => { this.applyMascot(this.state.mascot); }, 850);
+    };
+    if (cur !== 'idle' && cur !== 'ready' && cur !== 'arrived') {
+      this.setState({ mascot: 'idle' }, () => requestAnimationFrame(playHop));
+    } else {
+      playHop();
+    }
+  };
+  componentDidUpdate(prevProps) {
+    prevProps = prevProps || {};
+    const ct = this.state.theme || this.props.theme || 'day';
+    if (this._appliedTheme !== ct) this.applyTheme();
+    if (this._prevMascot !== this.state.mascot || prevProps.reduceMotion !== this.props.reduceMotion) {
+      this.applyMascot(this.state.mascot);
+    }
+    if (this._prevSpirit !== this.state.spirit || prevProps.spiritMode !== this.props.spiritMode || prevProps.reduceMotion !== this.props.reduceMotion) {
+      this.applySpiritMode();
+    }
+    this._prevSpirit = this.state.spirit;
+    if (this._prevProgress !== this.state.progress && this.progressBar.current) {
+      this.progressBar.current.style.width = this.state.progress + '%';
+    }
+    this._prevMascot = this.state.mascot;
+    this._prevProgress = this.state.progress;
+  }
+  applyTheme() {
+    const r = this.rootRef.current; if (!r) return;
+    const t = this.state.theme || this.props.theme || 'day';
+    const P = {
+      day:   { '--bg1':'#f7efdd','--bg2':'#e7d9bd','--parch':'#fdf8ee','--ink':'#4a4133','--soft':'#8a7d66','--line':'rgba(74,65,51,.12)','--hill1':'#cdd0a0','--hill2':'#aebb83','--hill3':'#8a9c62','--tree':'#6f8350','--tree2':'#5b6f43','--foliage':'#7d8e5b','--sun':'rgba(247,224,170,.7)','--rock1':'#c9b79a','--rock2':'#ad9a7c','--rock3':'#8b7960','--mist':'rgba(253,248,238,.6)','--t-day':'1','--t-dusk':'0','--t-night':'0','--sundisc':'#ffe2a0','--mtn':'#d9d7bb' },
+      dusk:  { '--bg1':'#f6d9b4','--bg2':'#d99a6a','--parch':'#fbf1e0','--ink':'#4a382c','--soft':'#9b7c5d','--line':'rgba(74,56,44,.14)','--hill1':'#ecc89a','--hill2':'#d9a673','--hill3':'#bd8155','--tree':'#9c6f49','--tree2':'#7e5838','--foliage':'#b07e52','--sun':'rgba(255,212,150,.78)','--rock1':'#cda980','--rock2':'#b58e66','--rock3':'#946f4d','--mist':'rgba(251,241,224,.5)','--t-day':'0','--t-dusk':'1','--t-night':'0','--sundisc':'#ff9a52','--mtn':'#e7c29c' },
+      night: { '--bg1':'#2c3050','--bg2':'#1d2036','--parch':'#363c58','--ink':'#efe7d4','--soft':'#a9afc9','--line':'rgba(239,231,212,.13)','--hill1':'#3b4168','--hill2':'#2f3557','--hill3':'#262b49','--tree':'#222848','--tree2':'#1a1f37','--foliage':'#2a3053','--sun':'rgba(150,170,220,.5)','--rock1':'#454a6e','--rock2':'#373b5a','--rock3':'#2a2d47','--mist':'rgba(54,60,88,.45)','--t-day':'0','--t-dusk':'0','--t-night':'1','--sundisc':'#ffd98a','--mtn':'#333a5e' }
+    };
+    const v = P[t] || P.day;
+    for (const k in v) r.style.setProperty(k, v[k]);
+    this._appliedTheme = t;
+  }
+
+  applyMascot(s) {
+    const setA = (ref, a) => { if (ref && ref.current) ref.current.style.animation = a || 'none'; };
+    const setT = (ref, t) => { if (ref && ref.current) ref.current.style.transform = t || 'none'; };
+    const setO = (ref, o) => { if (ref && ref.current) ref.current.style.opacity = o; };
+
+    this._calm = (s === 'idle' || s === 'ready' || s === 'arrived') && !this.props.reduceMotion;
+    this._headBase = 'none';
+
+    if (this.props.reduceMotion) {
+      [this.foxFloat,this.foxState,this.foxTail,this.foxBody,this.foxHead,this.foxEarL,this.foxEarR,this.foxEyes,this.foxOrb].forEach(r=>setA(r,'none'));
+      setT(this.foxState,'none'); setT(this.foxHead,'none'); setT(this.foxEarL,'none'); setT(this.foxEarR,'none');
+      const showOrbR = (s==='carrying'||s==='arrived'||s==='handoff');
+      setO(this.foxOrbWrap, showOrbR?1:0);
+      setO(this.foxSparkle, 0);
+      setO(this.foxZzz, 0); setO(this.foxFood, 0);
+      setO(this.foxGlowEyes, 0); setO(this.foxGlowTailTip, 0); setO(this.foxGlowBody, 0); setO(this.foxGlowParticles, 0); setO(this.foxFoxfire, 0);
+      if (this.foxState && this.foxState.current) this.foxState.current.style.filter = 'none';
+      setA(this.foxEyes, 'none'); setT(this.foxEyes, 'none');
+      if (this.foxGaze && this.foxGaze.current) this.foxGaze.current.style.transform = 'translate(0px,0px)';
+      return;
+    }
+
+    // defaults (idle)
+    setA(this.foxFloat, 'h2h-floatsoft 5s ease-in-out infinite');
+    setA(this.foxEyes, 'h2h-blink 5.5s ease-in-out infinite');
+    setA(this.foxEarL, 'h2h-ear 6s ease-in-out infinite'); setT(this.foxEarL, 'none');
+    setA(this.foxEarR, 'h2h-ear 6.7s ease-in-out infinite'); setT(this.foxEarR, 'none');
+    setA(this.foxBody, 'h2h-breathe 4.2s ease-in-out infinite');
+    setA(this.foxTail, 'h2h-tail 3.4s ease-in-out infinite');
+    setA(this.foxHead, 'none'); setT(this.foxHead, 'none');
+    setA(this.foxState, 'none'); setT(this.foxState, 'none');
+    setA(this.foxOrb, 'none');
+    setO(this.foxOrbWrap, 0);
+    setO(this.foxSparkle, 0);
+    setO(this.foxZzz, 0);
+    setO(this.foxFood, 0);
+    setT(this.foxEyes, 'none');
+
+    const earsForward = () => { setA(this.foxEarL,'none'); setT(this.foxEarL,'rotate(-9deg) translateY(-1px)'); setA(this.foxEarR,'none'); setT(this.foxEarR,'rotate(9deg) translateY(-1px)'); };
+    const showOrb = () => { setO(this.foxOrbWrap, 1); setA(this.foxOrb, 'h2h-orbfloat 2.4s ease-in-out infinite'); };
+
+    switch (s) {
+      case 'ready':
+        earsForward();
+        this._headBase = 'translateY(-3px)';
+        setT(this.foxHead, 'translateY(-3px)');
+        setA(this.foxTail, 'h2h-tailfast 1.3s ease-in-out infinite');
+        break;
+      case 'carrying':
+        earsForward();
+        setA(this.foxState, 'h2h-trot .5s ease-in-out infinite');
+        setA(this.foxBody, 'h2h-breathe 1.1s ease-in-out infinite');
+        setA(this.foxTail, 'h2h-tailfast .55s ease-in-out infinite');
+        showOrb();
+        break;
+      case 'success':
+        setA(this.foxState, 'h2h-hop 1.1s ease-in-out 2');
+        setA(this.foxTail, 'h2h-spin 1.1s ease-in-out 2');
+        setO(this.foxSparkle, 1);
+        break;
+      case 'arrived':
+        earsForward();
+        showOrb();
+        break;
+      case 'sleepy':
+        setO(this.foxZzz, 1);
+        setA(this.foxEyes, 'none'); setT(this.foxEyes, 'scaleY(0.14) translateY(3px)');
+        setA(this.foxHead, 'h2h-doze 3.2s ease-in-out infinite');
+        setA(this.foxBody, 'h2h-breathe 5.6s ease-in-out infinite');
+        setA(this.foxTail, 'h2h-tail 6s ease-in-out infinite');
+        setA(this.foxEarL,'none'); setT(this.foxEarL,'rotate(16deg)');
+        setA(this.foxEarR,'none'); setT(this.foxEarR,'rotate(-16deg)');
+        setA(this.foxFloat, 'h2h-floatsoft 6.5s ease-in-out infinite');
+        break;
+      case 'eating':
+        setO(this.foxFood, 1);
+        earsForward();
+        setA(this.foxHead, 'h2h-nibble .65s ease-in-out infinite');
+        setA(this.foxTail, 'h2h-tail 2.4s ease-in-out infinite');
+        break;
+      case 'stretch':
+        setA(this.foxState, 'h2h-stretch 2.6s ease-in-out 1');
+        setA(this.foxTail, 'h2h-tailfast 1.1s ease-in-out infinite');
+        earsForward();
+        break;
+      case 'lookaround':
+        setA(this.foxHead, 'h2h-lookaround 3s ease-in-out 1');
+        setA(this.foxEarL, 'h2h-ear 1.4s ease-in-out infinite');
+        setA(this.foxEarR, 'h2h-ear 1.6s ease-in-out infinite');
+        break;
+      case 'questioning':
+        setA(this.foxHead, 'h2h-tiltosc 3s ease-in-out infinite');
+        break;
+      case 'wrong':
+        setA(this.foxHead, 'h2h-shake .5s ease-in-out 2');
+        break;
+      case 'handoff':
+        earsForward();
+        setO(this.foxOrbWrap, 1);
+        setA(this.foxOrb, 'h2h-handoff 1s ease-in forwards');
+        break;
+      case 'sad':
+        setA(this.foxState, 'h2h-sad 4.5s ease-in-out infinite');
+        setT(this.foxHead, 'translateY(5px) rotate(-3deg)');
+        setA(this.foxEarL,'none'); setT(this.foxEarL,'rotate(20deg)');
+        setA(this.foxEarR,'none'); setT(this.foxEarR,'rotate(-20deg)');
+        setA(this.foxTail, 'h2h-tail 6s ease-in-out infinite');
+        setA(this.foxBody, 'h2h-breathe 5.5s ease-in-out infinite');
+        break;
+      default: break; // idle
+    }
+    this.updateGaze();
+  }
+
+  fmtSize(b) {
+    if (b < 1024) return b + ' B';
+    if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
+    return (b/1048576).toFixed(1) + ' MB';
+  }
+  addFiles(list) {
+    const arr = Array.from(list || []).map(f => ({ name: f.name, sizeLabel: this.fmtSize(f.size) }));
+    if (arr.length) this.setState(st => ({ files: st.files.concat(arr) }));
+  }
+
+  renderVals() {
+    const st = this.state;
+    const canSend = !st.sending && ((st.tab === 'files' && st.files.length > 0) || (st.tab === 'text' && st.text.trim().length > 0));
+    const isFilesTab = st.tab === 'files';
+
+    const tabBase = 'flex:1;border:none;cursor:pointer;font-family:Fredoka,sans-serif;font-weight:600;font-size:14.5px;padding:9px;border-radius:10px;transition:all .2s;';
+    const tabOn = tabBase + 'background:#fdf8ee;color:#4a4133;box-shadow:0 2px 7px -2px rgba(74,65,51,.25);';
+    const tabOff = tabBase + 'background:transparent;color:var(--soft);';
+
+    const dropBase = 'display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;border-radius:18px;padding:26px 18px;transition:all .2s;';
+    const dropStyle = this._drag
+      ? dropBase + 'border:2px dashed #d98f54;background:rgba(217,143,84,.12);transform:scale(1.01);'
+      : dropBase + 'border:2px dashed rgba(122,139,90,.4);background:rgba(122,139,90,.06);';
+
+    const sendBase = 'width:100%;margin-top:18px;border:none;font-family:Fredoka,sans-serif;font-weight:600;font-size:16px;color:#fff;border-radius:15px;padding:14px;transition:all .2s;';
+    const sendStyle = canSend
+      ? sendBase + 'cursor:pointer;background:linear-gradient(150deg,#d98f54,#b96f4c);box-shadow:0 10px 22px -8px rgba(185,111,76,.6);'
+      : sendBase + 'cursor:not-allowed;background:rgba(122,139,90,.22);color:#fdf8ee;box-shadow:none;';
+
+    const passOn = st.requirePass;
+    const passToggleStyle = 'flex:none;width:38px;height:22px;border-radius:12px;position:relative;transition:all .2s;background:' + (passOn ? '#7a8b5a' : 'rgba(74,65,51,.2)') + ';';
+    const passKnobStyle = 'position:absolute;top:2px;left:' + (passOn ? '18px' : '2px') + ';width:18px;height:18px;border-radius:50%;background:#fff;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);';
+
+    const pill = (active, color) => 'border:none;cursor:pointer;font-family:Nunito,sans-serif;font-weight:700;font-size:12px;padding:6px 11px;border-radius:11px;transition:all .15s;' + (active ? ('background:'+color+';color:#fff;') : 'background:transparent;color:var(--soft);');
+
+    const copyBase = 'flex:none;border:none;cursor:pointer;font-family:Fredoka,sans-serif;font-weight:600;font-size:13px;padding:9px 14px;border-radius:11px;transition:all .2s;';
+
+    const mascotCaptions = { idle:'Kit watches you · give it a pet', ready:'Kit perks up — ready!', carrying:'Kit is running it over', success:'Delivered with a little hop', arrived:'Kit arrived, guarding the bundle', questioning:'Kit tilts its head…', wrong:'a gentle no', handoff:'handing it over', sad:'Kit searches, but it\u2019s gone', sleepy:'Kit dozes off… zzz', eating:'Kit found a little berry', stretch:'Kit has a big stretch', lookaround:'Kit looks around the valley' };
+
+    const sentIsFiles = st.sentKind === 'files';
+    const ct = st.theme || this.props.theme || 'day';
+
+    return {
+      rootRef: this.rootRef,
+      isDay: ct === 'day', isDusk: ct === 'dusk', isNight: ct === 'night',
+      themeLabel: ct === 'night' ? 'Night' : (ct === 'dusk' ? 'Dusk' : 'Day'),
+      onToggleTheme: () => { const order = ['day', 'dusk', 'night']; this.setState({ theme: order[(order.indexOf(ct) + 1) % 3] }); },
+      foxFloat: this.foxFloat, foxState: this.foxState, foxTail: this.foxTail, foxBody: this.foxBody,
+      foxHead: this.foxHead, foxEarL: this.foxEarL, foxEarR: this.foxEarR, foxEyes: this.foxEyes,
+      foxOrbWrap: this.foxOrbWrap, foxOrb: this.foxOrb, foxSparkle: this.foxSparkle, foxZzz: this.foxZzz, foxFood: this.foxFood,
+      foxGlowEyes: this.foxGlowEyes, foxGlowTailTip: this.foxGlowTailTip, foxGlowBody: this.foxGlowBody, foxGlowParticles: this.foxGlowParticles, foxFoxfire: this.foxFoxfire,
+      foxGaze: this.foxGaze, foxShadow: this.foxShadow,
+      onPet: this.onPet,
+      onToggleSpirit: () => this.setState(st => ({ spirit: !this.spiritOn() })),
+      spiritBtnLabel: this.spiritOn() ? 'Spirit form' : 'Reveal spirit',
+      spiritStarFill: this.spiritOn() ? '#ffffff' : '#7ea6c4',
+      spiritBtnStyle: 'display:flex;align-items:center;gap:8px;border:1px solid ' + (this.spiritOn() ? 'rgba(120,185,235,.55)' : 'var(--line)') + ';background:' + (this.spiritOn() ? 'linear-gradient(150deg,#7cc3ef,#4a93cf)' : 'var(--parch)') + ';border-radius:13px;padding:8px 14px;cursor:pointer;font-family:Fredoka,sans-serif;font-weight:600;font-size:13.5px;color:' + (this.spiritOn() ? '#fff' : 'var(--ink)') + ';box-shadow:0 5px 16px -10px rgba(74,65,51,.5);transition:background .3s ease,color .3s ease;',
+      fileInput: this.fileInput, textInput: this.textInput, creatorPassInput: this.creatorPassInput,
+      retrievePassInput: this.retrievePassInput, progressBar: this.progressBar,
+
+      mascotCaption: mascotCaptions[st.mascot] || '',
+
+      // view flags
+      isUpload: st.view === 'upload',
+      isSuccess: st.view === 'success',
+      isExpired: st.view === 'expired',
+      showPasscode: st.view === 'retrieve' && st.sharePassRequired && !st.unlocked,
+      showContent: st.view === 'retrieve' && (!st.sharePassRequired || st.unlocked),
+
+      // upload
+      isFilesTab, isTextTab: !isFilesTab,
+      filesTabStyle: isFilesTab ? tabOn : tabOff,
+      textTabStyle: !isFilesTab ? tabOn : tabOff,
+      onFilesTab: () => this.setState({ tab: 'files' }),
+      onTextTab: () => this.setState({ tab: 'text' }),
+      dropStyle, dropTitle: st.files.length ? 'Add another file' : 'Hand Kit a file',
+      files: st.files.map((f, i) => ({ name: f.name, sizeLabel: f.sizeLabel, remove: () => this.setState(s => ({ files: s.files.filter((_, j) => j !== i) })) })),
+      onPick: () => this.fileInput.current && this.fileInput.current.click(),
+      onFileChange: (e) => { this.addFiles(e.target.files); e.target.value = ''; },
+      onDragOver: (e) => { e.preventDefault(); if (!this._drag) { this._drag = true; this.setState({ mascot: 'ready' }); } },
+      onDragLeave: (e) => { e.preventDefault(); this._drag = false; this.setState({ mascot: st.sending ? 'carrying' : 'idle' }); },
+      onDrop: (e) => { e.preventDefault(); this._drag = false; this.addFiles(e.dataTransfer.files); this.setState({ tab: 'files', mascot: 'idle' }); },
+      onTextInput: (e) => this.setState({ text: e.target.value }),
+
+      onTogglePass: () => this.setState(s => ({ requirePass: !s.requirePass })),
+      passToggleStyle, passKnobStyle, requirePass: st.requirePass,
+      onCreatorPass: (e) => this.setState({ creatorPass: e.target.value }),
+      onExpiry: (e) => this.setState({ expiry: e.target.value }),
+
+      sending: st.sending, notSending: !st.sending,
+      progressLabel: Math.round(st.progress) + '%',
+      sendStyle, sendLabel: 'Send it off',
+      onSend: () => { if (canSend) this.startSend(); },
+
+      // success
+      shareUrl: 'h2h.link/s/' + (st.shareId || '••••'),
+      deleteToken: st.deleteToken,
+      copyLinkStyle: copyBase + 'background:rgba(217,143,84,.16);color:#b96f4c;',
+      copyTokenStyle: copyBase + 'background:#b96f4c;color:#fff;',
+      copyLinkLabel: st.copied === 'link' ? 'Copied ✓' : 'Copy',
+      copyTokenLabel: st.copied === 'token' ? 'Copied ✓' : 'Copy',
+      onCopyLink: () => this.copy('h2h.link/s/' + st.shareId, 'link'),
+      onCopyToken: () => this.copy(st.deleteToken, 'token'),
+      onOpenLink: () => this.openLink(),
+      onNewShare: () => this.reset(),
+
+      // passcode
+      retrievePassStyle: 'width:100%;border:1.5px solid ' + (st.passWrong ? 'rgba(185,111,76,.55)' : 'rgba(91,107,140,.3)') + ';border-radius:14px;background:rgba(255,255,255,.55);padding:13px 15px;font-family:Nunito,sans-serif;font-size:15px;color:var(--ink);outline:none;letter-spacing:1px;',
+      onRetrievePass: (e) => this.setState({ retrievePass: e.target.value, passWrong: false }),
+      onPassKey: (e) => { if (e.key === 'Enter') this.submitPass(); },
+      onSubmitPass: () => this.submitPass(),
+      passWrong: st.passWrong,
+      demoHint: st.demoHint,
+
+      // content
+      contentSubtitle: sentIsFiles ? 'It carried these the whole way over. Take them when you\u2019re ready.' : 'A note, delivered. It\u2019s yours to keep.',
+      sentIsFiles, sentIsText: !sentIsFiles,
+      sentFiles: st.sentFiles, sentText: st.sentText,
+      downloadStyle: 'width:100%;margin-top:16px;border:none;cursor:pointer;font-family:Fredoka,sans-serif;font-weight:600;font-size:15.5px;color:#fff;background:linear-gradient(150deg,#7a8b5a,#5e7045);border-radius:14px;padding:14px;box-shadow:0 9px 20px -7px rgba(94,112,69,.5);',
+      downloadLabel: sentIsFiles ? 'Take it from here' : (st.downloaded ? 'Copied to clipboard ✓' : 'Copy the note'),
+      downloaded: st.downloaded,
+      handoffNote: sentIsFiles ? 'Handed over. It\u2019s yours now.' : 'Copied. Kit waves goodbye.',
+      onDownload: () => this.download(),
+
+      // demo dock
+      demoUploadStyle: pill(st.view === 'upload', '#d98f54'),
+      demoRetrieveStyle: pill(st.view === 'retrieve', '#7a8b5a'),
+      demoExpiredStyle: pill(st.view === 'expired', '#5b6b8c'),
+      onDemoRetrieve: () => this.demoRetrieve(),
+      onDemoExpired: () => this.setState({ view: 'expired', mascot: 'sad' })
+    };
+  }
+
+  startSend() {
+    this.setState({ sending: true, progress: 0, mascot: 'carrying' });
+    clearInterval(this._iv);
+    this._iv = setInterval(() => {
+      if (document.hidden) return;
+      this.setState(s => {
+        const p = Math.min(100, s.progress + 6 + Math.random() * 9);
+        return { progress: p };
+      }, () => {
+        if (this.state.progress >= 100) { clearInterval(this._iv); this.finishSend(); }
+      });
+    }, 170);
+  }
+  finishSend() {
+    const id = Math.random().toString(36).slice(2, 8);
+    const raw = (Math.random().toString(36).slice(2, 6) + Math.random().toString(36).slice(2, 6)).toUpperCase();
+    const token = raw.slice(0, 4) + '-' + raw.slice(4, 8);
+    this.setState({
+      sending: false, view: 'success', mascot: 'success',
+      shareId: id, deleteToken: token,
+      sharePassRequired: this.state.requirePass, sharePass: this.state.creatorPass,
+      sentKind: this.state.tab, sentFiles: this.state.files.slice(),
+      sentText: this.state.text, demoHint: false
+    });
+    setTimeout(() => { if (this.state.mascot === 'success') this.setState({ mascot: 'idle' }); }, 2600);
+  }
+  copy(text, which) {
+    try { navigator.clipboard && navigator.clipboard.writeText(text); } catch (e) {}
+    this.setState({ copied: which });
+    clearTimeout(this._cp);
+    this._cp = setTimeout(() => this.setState({ copied: '' }), 1600);
+  }
+  openLink() {
+    this.setState({
+      view: 'retrieve', unlocked: false, retrievePass: '', passWrong: false, downloaded: false,
+      mascot: this.state.sharePassRequired ? 'questioning' : 'arrived'
+    });
+  }
+  submitPass() {
+    if (this.state.retrievePass.trim().toLowerCase() === (this.state.sharePass || '').trim().toLowerCase()) {
+      this.setState({ unlocked: true, mascot: 'arrived', passWrong: false });
+    } else {
+      this.setState({ passWrong: true, mascot: 'wrong' });
+      setTimeout(() => { if (this.state.mascot === 'wrong') this.setState({ mascot: 'questioning' }); }, 1100);
+    }
+  }
+  download() {
+    if (this.state.sentKind === 'text') { try { navigator.clipboard && navigator.clipboard.writeText(this.state.sentText); } catch (e) {} }
+    this.setState({ mascot: 'handoff', downloaded: true });
+    setTimeout(() => { if (this.state.mascot === 'handoff') this.setState({ mascot: 'arrived' }); }, 1300);
+  }
+  demoRetrieve() {
+    this.setState({
+      view: 'retrieve', shareId: 'kf3p2a',
+      sharePassRequired: true, sharePass: 'forest', unlocked: false,
+      retrievePass: '', passWrong: false, downloaded: false, demoHint: true,
+      sentKind: 'files',
+      sentFiles: [{ name: 'forest-spirit-sketches.zip', sizeLabel: '8.4 MB' }, { name: 'lullaby-draft.mp3', sizeLabel: '3.1 MB' }],
+      sentText: '',
+      mascot: 'questioning'
+    });
+  }
+  reset() {
+    clearInterval(this._iv);
+    this.setState({
+      view: 'upload', tab: 'files', files: [], text: '',
+      requirePass: false, creatorPass: '', expiry: '1d',
+      sending: false, progress: 0, shareId: '', deleteToken: '',
+      retrievePass: '', passWrong: false, unlocked: false, downloaded: false, demoHint: false,
+      mascot: 'idle'
+    });
+  }
+}
+</script>
+</body>
+</html>

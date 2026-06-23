@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/fredoka/v17/X7n64b87HvSqjb_WIi2yDCRwoQ_k7367_DWu89XgHPyh.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofINeaBTMnFcQ.woff2) format('woff2');
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+@keyframes h2h-breathe   { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04,.965) translateY(1px)} }
+@keyframes h2h-tail      { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(10deg)} }
+@keyframes h2h-tailfast  { 0%,100%{transform:rotate(-16deg)} 50%{transform:rotate(18deg)} }
+@keyframes h2h-blink     { 0%,90%,100%{transform:scaleY(1)} 95%{transform:scaleY(.08)} }
+@keyframes h2h-ear       { 0%,88%,100%{transform:rotate(0)} 94%{transform:rotate(-7deg)} }
+@keyframes h2h-floatsoft { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+@keyframes h2h-trot      { 0%,100%{transform:translateY(0) rotate(-1.5deg)} 25%{transform:translateY(-7px) rotate(1.5deg)} 50%{transform:translateY(0) rotate(1.5deg)} 75%{transform:translateY(-7px) rotate(-1.5deg)} }
+@keyframes h2h-hop       { 0%{transform:translateY(0)} 28%{transform:translateY(-30px)} 52%{transform:translateY(0)} 70%{transform:translateY(-13px)} 100%{transform:translateY(0)} }
+@keyframes h2h-spin      { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+@keyframes h2h-tiltosc   { 0%,100%{transform:rotate(9deg)} 50%{transform:rotate(16deg)} }
+@keyframes h2h-shake     { 0%,100%{transform:rotate(0)} 20%{transform:rotate(-10deg)} 40%{transform:rotate(9deg)} 60%{transform:rotate(-7deg)} 80%{transform:rotate(6deg)} }
+@keyframes h2h-sad       { 0%,100%{transform:rotate(-4deg)} 50%{transform:rotate(4deg)} }
+@keyframes h2h-orbfloat  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+@keyframes h2h-handoff   { 0%{transform:translate(0,0);opacity:1} 100%{transform:translate(54px,-10px);opacity:0} }
+@keyframes h2h-sparkle   { 0%{opacity:0;transform:scale(0)} 35%{opacity:1} 100%{opacity:0;transform:scale(1.7) translateY(-14px)} }
+@keyframes h2h-leaf      { 0%{transform:translateY(-8vh) translateX(0) rotate(0deg);opacity:0} 12%{opacity:.7} 100%{transform:translateY(108vh) translateX(46px) rotate(240deg);opacity:0} }
+@keyframes h2h-fly       { 0%,100%{opacity:.12;transform:translate(0,0)} 50%{opacity:.9;transform:translate(9px,-12px)} }
+@keyframes h2h-twinkle   { 0%,100%{opacity:.25} 50%{opacity:1} }
+@keyframes h2h-drift     { 0%,100%{transform:translateX(0)} 50%{transform:translateX(60px)} }
+@keyframes h2h-birds     { 0%{transform:translate(-140px,60px)} 100%{transform:translate(1560px,-70px)} }
+@keyframes h2h-doze      { 0%,100%{transform:rotate(0deg) translateY(0)} 50%{transform:rotate(4deg) translateY(5px)} }
+@keyframes h2h-zzz       { 0%{opacity:0;transform:translate(0,0) scale(.5)} 20%{opacity:.95} 100%{opacity:0;transform:translate(18px,-40px) scale(1.15)} }
+@keyframes h2h-nibble    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)} }
+@keyframes h2h-stretch   { 0%,100%{transform:scaleY(1) translateY(0)} 28%{transform:scaleY(.9) translateY(7px)} 56%{transform:scaleY(1.07) translateY(-7px) rotate(-2deg)} }
+@keyframes h2h-lookaround{ 0%,100%{transform:rotate(0deg)} 22%{transform:rotate(-13deg)} 40%{transform:rotate(-13deg)} 68%{transform:rotate(13deg)} 86%{transform:rotate(13deg)} }
+@keyframes h2h-foodbob   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+@keyframes h2h-spiritpulse{ 0%,100%{opacity:.48} 50%{opacity:1} }
+@keyframes h2h-sp1       { 0%{opacity:0;transform:translate(0,0)} 18%{opacity:.85} 100%{opacity:0;transform:translate(-14px,-65px)} }
+@keyframes h2h-sp2       { 0%{opacity:0;transform:translate(0,0)} 18%{opacity:.8}  100%{opacity:0;transform:translate(10px,-70px)} }
+@keyframes h2h-sp3       { 0%{opacity:0;transform:translate(0,0)} 18%{opacity:.9}  100%{opacity:0;transform:translate(-6px,-62px)} }
+@keyframes h2h-sp4       { 0%{opacity:0;transform:translate(0,0)} 18%{opacity:.75} 100%{opacity:0;transform:translate(12px,-58px)} }
+@keyframes h2h-sp5       { 0%{opacity:0;transform:translate(0,0)} 18%{opacity:.85} 100%{opacity:0;transform:translate(-9px,-52px)} }
+@keyframes h2h-foxfire   { 0%,100%{transform:translateY(0) scale(1);opacity:.7}  50%{transform:translateY(-8px) scale(1.12);opacity:1} }
+@keyframes h2h-foxfire2  { 0%,100%{transform:translateY(0) scale(1.05);opacity:.85} 50%{transform:translateY(-6px) scale(.92);opacity:.55} }
+@keyframes h2h-viewin    { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+@keyframes h2h-reveal    { 0%{opacity:0;transform:translateY(10px) scale(.96)} 100%{opacity:1;transform:none} }
+@keyframes h2h-pulse     { 0%,100%{box-shadow:0 0 0 0 rgba(202,168,106,0)} 50%{box-shadow:0 0 0 7px rgba(202,168,106,.16)} }
+
+::placeholder { color: #b6a98e; }
+
+.h2h-scroll::-webkit-scrollbar { width: 8px; }
+.h2h-scroll::-webkit-scrollbar-thumb { background: rgba(122,139,90,.35); border-radius: 8px; }
+
+@media (max-width: 640px) {
+  /* Whole page becomes one natural scrolling document */
+  html, body { overflow-x: hidden; }
+  .h2h-root {
+    overflow: visible !important;
+    min-height: 100vh !important;
+  }
+
+  /* Scenery (sky + hills) stays pinned to the viewport as a backdrop,
+     so the fox's cliff always has ground behind it while you scroll */
+  .h2h-bg { position: fixed !important; }
+
+  /* Fox + its cliff now live in normal document flow at the top and
+     scroll away with the page. The wrapper crops off the cliff's
+     floating underside; aspect-ratio keeps the crop proportional on
+     every screen width so nothing ever hangs in empty sky. The card
+     then tucks in front of the cliff edge via the negative margin. */
+  .h2h-fox-wrap {
+    position:     relative  !important;
+    left:         auto      !important;
+    right:        auto      !important;
+    top:          auto      !important;
+    bottom:       auto      !important;
+    transform:    none      !important;
+    margin:       6px auto -26px !important;
+    width:        360px     !important;
+    max-width:    94vw      !important;
+    height:       auto      !important;
+    aspect-ratio: 360 / 250 !important;
+    overflow:     hidden    !important;
+    z-index:      2         !important;
+  }
+  /* Re-anchor the SVG to the top of the wrapper (it's normally
+     bottom-anchored "slice") so the crop happens at the bottom. */
+  .h2h-fox-wrap > svg {
+    position: static !important;
+    inset:    auto   !important;
+    width:    100%   !important;
+    height:   auto   !important;
+    display:  block  !important;
+  }
+
+  /* Card: centered, sits in front of the cliff base, scrolls naturally */
+  .h2h-main {
+    flex-direction:  column     !important;
+    justify-content: flex-start !important;
+    align-items:     center     !important;
+    min-height:      0          !important;
+    z-index:         5          !important;
+    padding:         0 16px 48px !important;
+  }
+
+  /* Hide caption + pet button (fox SVG still handles taps) */
+  .h2h-fox-caption { display: none !important; }
+  .h2h-fox-pet     { display: none !important; }
+
+  /* Compact header */
+  .h2h-header       { padding: 12px 16px !important; }
+  .h2h-header-label { display: none !important; }
+}

@@ -1,0 +1,28 @@
+# Environment
+.env
+*.env
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+dist/
+build/
+
+# SQLite
+*.db
+*.db-shm
+*.db-wal
+data/
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# OS
+.DS_Store
+Thumbs.db

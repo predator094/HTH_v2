@@ -4,7 +4,7 @@ services:
     restart: unless-stopped
     env_file: .env
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8001:8000"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
       interval: 30s
@@ -17,7 +17,7 @@ services:
     environment:
       - BACKEND_URL=http://backend:8000
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3002:3000"
     depends_on:
       backend:
         condition: service_started

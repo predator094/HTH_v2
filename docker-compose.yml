@@ -3,10 +3,6 @@ services:
     build: ./backend
     restart: unless-stopped
     env_file: .env
-    environment:
-      - DB_PATH=/data/h2h.db
-    volumes:
-      - h2h-data:/data
     ports:
       - "8000:8000"
     healthcheck:
@@ -26,5 +22,3 @@ services:
       backend:
         condition: service_started
 
-volumes:
-  h2h-data:

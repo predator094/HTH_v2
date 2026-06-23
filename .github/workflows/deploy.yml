@@ -31,7 +31,6 @@ jobs:
       - name: Run tests
         env:
           TESTING: "true"
-          DB_PATH: ":memory:"
         run: pytest tests/ -v --tb=short
 
   # ── build check ───────────────────────────────────────────────────────────

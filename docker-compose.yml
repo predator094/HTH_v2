@@ -12,7 +12,10 @@ services:
       retries: 3
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        - NEXT_PUBLIC_SITE_PASSCODE=${NEXT_PUBLIC_SITE_PASSCODE}
     restart: unless-stopped
     environment:
       - BACKEND_URL=http://backend:8000
